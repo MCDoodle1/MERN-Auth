@@ -15,7 +15,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/goals", require("./routes/goalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
-// Serve frontend
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://mern-auth-04na.onrender.com"],
+  })
+);
+
+/* // Serve frontend
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));
   app.get("*", (req, res) => {
@@ -25,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => {
     res.send("Please set to production");
   });
-}
+} */
 
 app.use(errorHandler);
 
