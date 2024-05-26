@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
-const Header = () => {
+function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
+    <header className="header">
       <div className="logo">
         <Link to="/">GoalSetter</Link>
       </div>
@@ -41,8 +41,8 @@ const Header = () => {
           </>
         )}
       </ul>
-    </div>
+    </header>
   );
-};
+}
 
 export default Header;
